@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIEW POSTS</title>
+</head>
+<body>
+    {% for user in users %}
+        {% for post in user.posts %}
+
+            <h3>{{ user.username }}</h3>
+            <b>{{ post.title }}</b>
+            <p>{{ post.content }}</p>
+
+            <form action="/post/like/{{ post.id }}" method="POST">
+                <button type="submit">LIKE</button>
+            </form>
+
+            <form action="/post/dislike/{{ post.id }}" method="POST">
+                <button type="submit">DISLIKE</button>
+            </form>
+
+            <p>Like: {{ post.like }}</p>
+
+            <a href="/post/comment/{{ post.id }}">
+                <button type="button">COMMENT</button>
+            </a>
+
+            <h5>COMMENTS</h5>
+
+            {% if post.comments %}
+                {% for c in post.comments %}
+                    <p>
+                        <b>{{ c.user.username }}</b>: {{ c.comment }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                <p>No comments yet</p>
+            {% endif %}
+            <p>---------------------------------------------------------------------------------</p>
+        {% endfor %}
+    {% endfor %}
+    <a href="/post">
+        <button type="button">BACK</button>
+    </a>
+</body>
+</html> 

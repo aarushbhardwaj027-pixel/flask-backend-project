@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER</title>
+</head>
+<body>
+    {% if session.user_id %}
+
+    <h2>Welcome {{username}}</h2>
+
+    <button><a href="post/add_post">ADD POST</a></button><br>
+    <button><a href="post/view_posts">VIEW</a></button><br>
+    <button><a href="post/my_posts">VIEW MY POSTS</a></button><br>
+    <button><a href="auth/logout">LOG OUT</a></button>
+
+
+    {% endif %}
+</body>
+</html>
