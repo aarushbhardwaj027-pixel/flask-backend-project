@@ -9,7 +9,7 @@ post_bp = Blueprint('post',__name__)
 @post_bp.route('/add_post',methods = ['GET','POST'])
 def add_post():
     if 'user_id' not in session:
-        return redirect("/auth/login")
+        return redirect("/")
 
     if request.method == "POST":
         title = request.form['title']
@@ -89,7 +89,7 @@ def update(id):
 def like(id):
 
     if 'user_id' not in session:
-        return redirect("/auth/login")
+        return redirect("/")
 
     count = Post.query.get(id)
 
@@ -117,7 +117,7 @@ def like(id):
 @post_bp.route("/dislike/<int:id>", methods=["POST"])
 def dislike(id):
     if 'user_id' not in session:
-        return redirect("/auth/login")
+        return redirect("/")
 
     count = Post.query.get(id)
 
